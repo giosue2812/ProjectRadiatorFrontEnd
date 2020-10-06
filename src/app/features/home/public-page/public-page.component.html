@@ -1,0 +1,66 @@
+<ngb-toast *ngIf="show"
+           header="Success"
+           [delay]="5000"
+           (hide)="show = false" class="bg-success text-light">
+  <p>You are connected</p>
+</ngb-toast>
+<ng-container *ngIf="projectShort">
+    <div class="jumbotron" *ngFor="let item of projectShort.projects | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <h1 class="display-4 text-center">{{item.title}}</h1><br/>
+      <p class="lead"><span class="textData">Description :</span> {{item.description}}</p>
+      <p class="lead"><span class="textData">Client :</span> {{item.society}}</p>
+      <p class="lead"><span class="textData">Stage :</span> {{item.typeStages}}</p>
+      <p class="lead"><span class="textData">Next Metting :</span> {{item.mettingDate|date:'d-MM-y'}}</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="page-header">
+                  <h1>Milestones</h1>
+                </div>
+                <div style="display:inline-block;width: 100%;overflow-y:auto" class="text-center">
+                  <ng-container *ngFor="let milestone of item.milestone">
+                  <ul class="timeline timeline-horizontal">
+                    <li class="timeline-item">
+                      <div class="timeline-badge primary"><i class="glyphicon glyphicon-check"></i></div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                          <h4 class="timeline-title">{{milestone.milestonesDate|date:'d-MM-y'}}</h4>
+                          <ng-container *ngFor="let milestoneType of milestone.milestonesType">
+                            <ng-container *ngFor="let m of milestoneType">
+                              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>{{m.milestoneType}}</small></p>
+                            </ng-container>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="lead">List of peoples that work on this project</p>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Task</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let people of item.peoples">
+                <td>{{people.firstName}} {{people.lastName}}</td>
+                <td>{{people.labelJob}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="lead"> If you want more information. Please contact Project Manager</p>
+          <hr class="my-4">
+          <ngb-pagination class="d-flex justify-content-center"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="projectShort.projects.length">
+          </ngb-pagination>
+        </div>
+</ng-container>
+

@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <div class="card m-auto" style="width:35%">
+    <div class="card-body">
+  <form [formGroup]="loginGroup" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+      <label for="emailAdress">Email Adress</label>
+      <input type="email" class="form-control" id="emailAdress" formControlName="emailAdress" ngModel email>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="loginGroup.invalid">Submit</button>
+  </form>
+</div>
+</div>
+</div>
