@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {path: 'home',loadChildren:() => import('../app/features/home/home.module').then(m => m.HomeModule)},
   {path:'login',loadChildren:() => import('../app/features/connection/connection.module').then(m => m.ConnectionModule)},
+  {path:'dashboard',loadChildren:() => import('../app/features/dash-board/dash-board.module').then(m => m.DashBoardModule)},
+  {path:'project',loadChildren:() => import('../app/features/project/project.module').then(m => m.ProjectModule)},
   {path:'**',redirectTo:'home',pathMatch:'full'},
   {path: '',redirectTo: 'home',pathMatch: 'full'}
 ];

@@ -1,0 +1,34 @@
+<div class="jumbotron">
+  <a href="#" class="btn btn-primary">New Project</a>
+  <table class="table table-striped">
+    <thead>
+      <tr class="bg-dark text-light">
+        <th scope="col">Project</th>
+        <th scope="col">Description</th>
+        <th scope="col">Creation Date</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Society</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of projectModel.projects|slice:(page-1) * pageSize:(page-1)*pageSize + pageSize">
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.creationDate|date: 'd-MM-y'}}</td>
+        <td>{{item.startDate|date: 'd-MM-y'}}</td>
+        <td>{{item.society}}</td>
+        <td>
+          <a routerLink="detail/{{item.idProject}}">Detail </a>
+          <a href="#">Edit </a>
+          <a href="#">Close</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ngb-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="projectModel.projects.length"
+  ></ngb-pagination>
+</div>

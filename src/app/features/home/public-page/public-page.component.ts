@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ProjectShort} from "../../../core/models/ProjectShort";
-import {ProjectShortService} from "../../../core/services/project-short.service";
+import {ProjectBase} from "../../../core/models/ProjectBase";
+import {ProjectService} from "../../../core/services/project.service";
 import {ConnectionService} from "../../../core/services/connection.service";
 
 @Component({
@@ -12,16 +12,14 @@ export class PublicPageComponent implements OnInit {
   page=1;
   pageSize=1;
   /**
-   * @type projectShort: ProjectShort[]
+   * @type projectShort: ProjectBase[]
    */
-  projectShort: ProjectShort;
+  projectShort: ProjectBase;
   /**
-   * @param projectShortService: ProjectShortService
+   * @param projectShortService: ProjectService
    * @param connexionService: ConnectionService
    */
-  constructor(private projectShortService:ProjectShortService,public connexionService:ConnectionService) { }
-
-  show = this.connexionService.isConnected;
+  constructor(private projectShortService:ProjectService, public connexionService:ConnectionService) { }
 
   ngOnInit(): void {
     this.projectShortService.getProjectShort().subscribe(

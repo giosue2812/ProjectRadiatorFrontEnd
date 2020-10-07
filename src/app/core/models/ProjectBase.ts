@@ -1,6 +1,6 @@
 import {Project} from "./Project";
 
-export interface ProjectShort {
+export interface ProjectBase {
   projects: Project[];
   totalProjects: number;
   status: number;

@@ -33,8 +33,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmitForm(){
-    console.log(this.loginGroup.value);
-    this.router.navigateByUrl('home');
+    this.router.navigateByUrl('dashboard');
     this.connexionService.isConnected = true;
   }
 }

@@ -1,0 +1,76 @@
+<ngb-toast *ngIf="show"
+           header="Success"
+           [delay]="5000"
+           (hide)="show = false" class="bg-success text-light">
+  <p>You are connected</p>
+</ngb-toast>
+<div class="jumbotron">
+  <h1 class="display-4 text-center">Dash Board</h1>
+  <hr/>
+  <div class="card-deck">
+    <div class="card" style="width: 30%">
+      <div class="card-body">
+        <h5 class="card-title">Project List</h5>
+        <hr/>
+        <div style="height: 40%">
+          <h6 class="card-subtitle mb-2 text-muted">Nombre de projet open</h6><h6>10</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Nombre de project close</h6><h6>10</h6>
+        </div>
+        <hr/>
+        <p class="card-text text-center">Show project list</p>
+        <a routerLink="/project" class="btn btn-primary">Open</a>
+      </div>
+    </div>
+    <div class="card" style="width: 30%" *ngIf="connexionService.isSysadmin || connexionService.isAdmin && connexionService.isProManager">
+      <div class="card-body">
+        <h5 class="card-title">Customer List</h5>
+        <hr/>
+        <div style="height: 40%">
+          <h6 class="card-subtitle mb-2 text-muted">Customer</h6><h6>10</h6>
+        </div>
+        <hr/>
+        <p class="card-text text-center">Show customer list</p>
+        <button type="button" class="btn btn-primary">Open</button>
+      </div>
+    </div>
+    <div class="card" style="width: 30%" *ngIf="connexionService.isSysadmin || connexionService.isAdmin && connexionService.isProManager">
+      <div class="card-body">
+        <h5 class="card-title">Teams bStorm List</h5>
+        <hr/>
+        <div style="height: 40%">
+          <h6 class="card-subtitle mb-2 text-muted">Teams</h6><h6>10</h6>
+        </div>
+        <hr/>
+        <p class="card-text text-center">Show Teams bStorm</p>
+        <button type="button" class="btn btn-primary">Open</button>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="card-deck">
+    <div class="card" style="width: 30%" *ngIf="connexionService.isSysadmin">
+      <div class="card-body">
+        <h5 class="card-title">Logger</h5>
+        <hr/>
+        <div style="height: 40%">
+          <h6 class="card-subtitle mb-2 text-muted">Log</h6><h6>10</h6>
+        </div>
+        <hr/>
+        <p class="card-text text-center">Show Logger List</p>
+        <button type="button" class="btn btn-primary">Open</button>
+      </div>
+    </div>
+    <div class="card" style="width: 30%" *ngIf="connexionService.isSysadmin || connexionService.isProManager">
+      <div class="card-body">
+        <h5 class="card-title">Setup</h5>
+        <hr/>
+        <div style="height: 23%">
+          <h6 class="card-subtitle mb-2 text-muted">Modified setup of apps</h6>
+        </div>
+        <hr/>
+        <p class="card-text text-center">Show Setup</p>
+        <button type="button" class="btn btn-primary">Open</button>
+      </div>
+    </div>
+  </div>
+</div>

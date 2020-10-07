@@ -2,7 +2,7 @@ import {People} from "./People";
 import {Milestone} from "./Milestone";
 
 export interface Project {
-  id: number;
+  idProject: number;
   title: string;
   description: string;
   society: string;
@@ -10,4 +10,6 @@ export interface Project {
   mettingDate?: Date;
   milestone: Milestone[];
   peoples: People[];
+  creationDate:Date;
+  startDate?:Date;
 }

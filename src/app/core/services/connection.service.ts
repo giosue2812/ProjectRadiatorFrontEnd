@@ -6,11 +6,8 @@ import { Injectable } from '@angular/core';
 export class ConnectionService {
 
   isConnected = false;
-
+  isSysadmin = true;
+  isProManager = false;
+  isAdmin = false;
   constructor() { }
-
-  getIsConnected()
-  {
-    return this.isConnected;
-  }
 }
