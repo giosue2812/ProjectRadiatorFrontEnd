@@ -1,3 +1,9 @@
+<ngb-toast *ngIf="show"
+           header="Success"
+           [delay]="5000"
+           (hide)="show = false" class="bg-success text-light positionToast">
+  <p>You are connected</p>
+</ngb-toast>
 <ng-container *ngIf="projectShort">
     <div class="jumbotron" *ngFor="let item of projectShort.projects | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
       <h1 class="display-4 text-center">{{item.title}}</h1><br/>

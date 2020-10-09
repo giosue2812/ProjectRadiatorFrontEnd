@@ -1,11 +1,8 @@
 import {Project} from "./Project";
+import {ModelBase} from "./ModelBase";
 
-export interface ProjectBase {
+export interface ProjectBase extends ModelBase{
   projects: Project[];
-  totalProjects: number;
-  status: number;
-  isSucess: boolean;
-  errorMessage?: any;
 }
 
 

@@ -1,7 +1,6 @@
+import {ModelBase} from "./ModelBase";
+
 export interface MilestoneType{
+  idMilestone:number;
   milestoneType : string;
-  totalProjects: number;
-  status: number;
-  isSucess: boolean;
-  errorMessage?: any;
 }

@@ -9,5 +9,6 @@ export class ConnectionService {
   isSysadmin = true;
   isProManager = false;
   isAdmin = false;
+  email = "gio.liu@hot.be";
   constructor() { }
 }

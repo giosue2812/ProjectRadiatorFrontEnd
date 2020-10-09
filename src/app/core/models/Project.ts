@@ -3,7 +3,7 @@ import {Milestone} from "./Milestone";
 
 export interface Project {
   idProject: number;
-  title: string;
+  project: string;
   description: string;
   society: string;
   typeStages: string;

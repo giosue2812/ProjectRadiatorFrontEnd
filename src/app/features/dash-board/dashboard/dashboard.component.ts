@@ -9,7 +9,6 @@ import {ConnectionService} from "../../../core/services/connection.service";
 export class DashboardComponent implements OnInit {
 
   constructor(public connexionService:ConnectionService) { }
-  show = this.connexionService.isConnected;
   ngOnInit(): void {
   }
 

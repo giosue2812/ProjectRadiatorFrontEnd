@@ -11,6 +11,7 @@ import {ConnectionService} from "../../../core/services/connection.service";
 export class PublicPageComponent implements OnInit {
   page=1;
   pageSize=1;
+  show = this.connexionService.isConnected;
   /**
    * @type projectShort: ProjectBase[]
    */

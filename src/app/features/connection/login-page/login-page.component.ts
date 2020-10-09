@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EmailValidator, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {EmailValidator, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ConnectionService} from "../../../core/services/connection.service";
 
@@ -27,13 +27,13 @@ export class LoginPageComponent implements OnInit {
 
   initForm(){
     this.loginGroup = this.formBuilder.group({
-      emailAdress:['',Validators.required],
-      password:['',Validators.required]
+      emailAdress:new FormControl('',[Validators.required]),
+      password:new FormControl('',[Validators.required])
     })
   }
 
   onSubmitForm(){
-    this.router.navigateByUrl('dashboard');
+    this.router.navigateByUrl('home');
     this.connexionService.isConnected = true;
   }
 }
