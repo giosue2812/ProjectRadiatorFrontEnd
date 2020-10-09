@@ -1,0 +1,111 @@
+<div class="jumbotron" *ngIf="projectDetailModel">
+  <ng-container *ngFor="let item of projectDetailModel.projects">
+    <form [formGroup]="detailForm" (ngSubmit)="onSubmitForm()">
+      <div class="row justify-content-center">
+        <div class="form-group p-3">
+          <label for="titreProject">Titre Project</label>
+          <input type="text" class="form-control" id="titreProject" formControlName="title" [(ngModel)]="item.titre" [readOnly]="!isEdit">
+        </div>
+
+        <div class="form-group p-3">
+          <label for="societyProject">Society</label>
+          <input type="text" class="form-control" id="societyProject" formControlName="society" [(ngModel)]="item.society" [readOnly]="!isEdit">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="form-group p-3 w-50">
+          <label for="descriptionProject">Description Project</label>
+          <textarea id="descriptionProject" class="form-control" aria-label="With Textarea" formControlName="description" [(ngModel)]="item.description" [readOnly]="!isEdit"></textarea>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="form-group p-3">
+          <label for="startDate">Start Date: {{item.startDate|date:'d/MM/yyyy'}}</label>
+          <input [(ngModel)]="item.startDate" type="date" class="form-control" id="startDate" formControlName="startDate" [readOnly]="!isEdit">
+        </div>
+      </div>
+
+      <table class="table table-bordered w-50 m-auto">
+        <thead>
+          <tr>
+            <th scope="col">Date Milestone</th>
+            <th scope="col">Type Milestone</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let milestone of item.milestone">
+            <tr *ngFor="let mile of milestone.milestonesType">
+              <td>{{milestone.milestonesDate|date:'d/MM/y'}}</td>
+              <td *ngFor="let type of mile"> {{type.milestoneType}}</td>
+              <td><button type="button" class="btn btn-danger" [disabled]="!isEdit">Remove</button></td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+
+      <div class="row justify-content-center">
+        <div class="form-group p-3 w-25">
+          <label for="dateMilestone">Date Milestones</label>
+          <input type="date" class="form-control" id="dateMilestone" formControlName="dateMilestones" [readOnly]="!isEdit">
+        </div>
+        <div class="form-group p-3 w-25" formGroupName="milestonesType">
+          <label for="typeMilestone">Type Milestones</label>
+          <select  class="custom-select" id="typeMilestone" formControlName="idTypeMilestones" [attr.disabled]="!isEdit ? '' : null">
+            <option *ngFor="let type of milestoneType.milestoneTypes" [value]="type.idMilestone">{{type.milestoneType}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row justify-content-center" formGroupName="typeStages">
+        <div class="form-group p-3 w-25">
+          <label for="stagesType">Type Stages</label>
+          <select [(ngModel)]="item.typeStages" class="custom-select" id="stagesType" formControlName="idStages" [attr.disabled]="!isEdit ? '' : null">
+            <option *ngFor="let type of stageType.stageTypes" [value]="type.idTypeStage">{{type.label}}</option>
+          </select>
+        </div>
+      </div>
+
+      <table class="table table-bordered w-50 m-auto">
+        <thead>
+        <tr>
+          <th scope="col">Type Follow</th>
+          <th scope="col">Comment Developeur</th>
+          <th scope="col">Comment Customer</th>
+          <th scope="col">Date</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let follow of item.typeFollows">
+          <tr *ngFor="let type of follow">
+            <td>{{type.label}}</td>
+            <td>{{type.commentDev}}</td>
+            <td>{{type.commentCustomer}}</td>
+            <td>{{type.dateFollow|date:'d/MM/y'}}</td>
+            <td><button type="button" class="btn btn-danger" [disabled]="!isEdit">Remove</button></td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+
+      <div class="row justify-content-center">
+        <div class="form-group p-3 w-25">
+          <label for="followType">Type Follow</label>
+               <select class="custom-select" id="followType" formControlName="idTypeFollow" [attr.disabled]="!isEdit ? '' : null">
+                <option *ngFor="let item of typeFollow.typeFollows" [value]="item.idTypeFollow">{{item.label}}</option>
+              </select>
+              <div class="form-group w-100">
+                <label for="descriptionFollow">Description Follow</label>
+                <textarea id="descriptionFollow" class="form-control" aria-label="With Textarea" formControlName="commentDev" [readOnly]="!isEdit">
+                </textarea>
+              </div>
+        </div>
+      </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!isEdit">Update</button>
+        <button type="button" class="btn btn-success" (click)="onEditMode()">Edit</button>
+    </form>
+  </ng-container>
+</div>

@@ -4,6 +4,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse w-100 order-3" id="projectRadiatorNav">
+    <div class="navbar-nav" *ngIf="connexionService.isConnected">
+      <a class="nav-link" routerLink="dashboard">DashBoard</a>
+    </div>
     <div class="navbar-nav ml-auto">
       <a class="nav-link" routerLink="login">Login</a>
     </div>
